@@ -13,10 +13,11 @@ declare const $: any;
 
 
 export class AppComponent {
-  files: { name: string; url: string; desc:string,image:string}[]=[];
+  // files: { name: string; url: string; desc:string,image:string}[]=[];
   songFile: any;
   imageFile: any;
   userId:any;
+  files:any=[]
   
   
 
@@ -115,8 +116,12 @@ this.getAudio()
  audio=new Audio()
 
 fileplay(file:any){
+ 
+  let url=file.song
+
   
-  this.audio.src=file.url
+ 
+  this.audio.src= "http://localhost:3000/"+url
   this.audio.load();
   this.audio.play()
 
@@ -150,8 +155,6 @@ getAudio(){
  
   })
 }
-
-
 
 deleteSong(data:any){
   alert(data.id)
