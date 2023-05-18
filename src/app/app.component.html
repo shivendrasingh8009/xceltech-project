@@ -23,10 +23,10 @@
         <th scope="row">1</th>
         <td>{{file.name}}</td>
         <td>{{file.desc}}</td>
-        <td ><button (click)="fileplay(file)">Play Song</button></td>
-        <td ><button (click)="pause()">Pause</button></td>
-        <td ><button (click)="deleteSong(file)">Delete</button></td>
-        <td > <button (click)="updateSong(file)">Update</button></td>
+        <td ><button type="button" class="btn btn-success" (click)="fileplay(file)">Play Song</button></td>
+        <td ><button type="button" class="btn btn-primary" (click)="pause()">Pause</button></td>
+        <td ><button type="button" class="btn btn-danger" (click)="deleteSong(file)">Delete</button></td>
+        <td > <button type="button" class="btn btn-warning" (click)="updateSong(file)">Update</button></td>
       </tr>
       
     </tbody>

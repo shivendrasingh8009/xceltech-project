@@ -23,6 +23,7 @@ export class AppComponent {
 
   addForm!: FormGroup<any>;
   registerForm!: FormGroup<any>;
+  patch: any;
  
 
   constructor(private formBuilder: FormBuilder, private http:HttpClient) {
@@ -93,14 +94,7 @@ console.log("RESSSSSSSS>>>>>",res)
 let path=res.song
 console.log("RESSSSSSSS>>>>>",path)
 this.getAudio()
-// src="
-// this.files=[{name:res.filename,url:`http://localhost:3000/${{path}}` ,desc:"",image:""},
-//   {name:"song 2",url:"../assets/song2.mp3",desc:"",image:""},
-//   {name:"song 3",url:"../assets/song3.mp3",desc:"",image:""},
-//   {name:"song 4",url:"../assets/song4.mp3",desc:"",image:""},
-//   {name:"song 5",url:"../assets/song5.mp3",desc:"",image:""},
-//   {name:"song 6",url:"../assets/song6.mp3",desc:"",image:""},
-//   ]
+
 
   })
    
@@ -157,17 +151,29 @@ getAudio(){
 }
 
 deleteSong(data:any){
-  alert(data.id)
   this.http.delete("http://localhost:3000/test/delete-audio"+"/"+data.id).subscribe((res:any)=>{
-    console.log("GET SONG>>>>>>",res)
     this.getAudio()
 
+  })
+
+}
+edit(id:any){
+  this.files.filter((d:any)=>{
+    if(id==d.id){
+      this.addForm.patchValue({
+        name:d.name,
+        desc:d.desc
+        
+      })
+    }
   })
 
 }
 
 
 updateSong(data:any){
+  let id=data.id
+  this.edit(id)
   const formData=new FormData();
   formData.append('file',this.songFile)
   // formData.append('image',this.songFile)
@@ -178,7 +184,6 @@ updateSong(data:any){
     params = params.set("desc",this.addForm.value.desc);
     params = params.set("id",data.id);
     params = params.set("userId",this.userId);
-  alert(data.id)
   
   this.http.patch("http://localhost:3000/test/delete-audio"+params,formData).subscribe((res:any)=>{
     console.log("GET SONG>>>>>>",res)
@@ -190,8 +195,7 @@ updateSong(data:any){
 
 }
 }
-///////////////////////////////////////////////////////////////////////
-// path="http://localhost:3000/uploads\\Heroine(PagalWorld.com.se).mp3"
+
     
 
 

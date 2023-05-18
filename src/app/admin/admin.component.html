@@ -1,29 +1,36 @@
-<div>
-    <button (click)="userres()"  >Register</button>
-    <button (click)="userlog()">Login</button>
+<div style="margin-top: 1%; margin-left: 30%;">
+    <button  type="button" class="btn btn-primary" (click)="userres()"  >Register</button>&nbsp;&nbsp;
+    &nbsp;   
+
+    
+    <button  type="button" class="btn btn-success" (click)="userlog()">Login</button>
+    
 </div>
 
-<div  [hidden]="logShow">
+<div  [hidden]="logShow" style="margin-top: 5%; margin-left: 30%;" >
     <div>
         <h1>Login</h1>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="login()" >
-  <input type="text"  placeholder="Email/userName" formControlName="email"/>
+  <input  type="text"  placeholder="Email/userName" formControlName="email"/>
+  <br/>
   <input type="password" placeholder="Password" formControlName="password" />
-  <button type="submit" >Submit</button>
+  <br/>
+  <br/>
+  <button type="button" class="btn btn-primary">Submit</button>
     </form>
 
 </div>
 
 
-<div  [hidden]="regShow">
+<div  [hidden]="regShow" style="margin-top: 10%; margin-left: 30%;" >
     <div>
         <h1>Register</h1>
     </div>
     <form [formGroup]="registerForm" (ngSubmit)="register()" >
-  <input type="text"  placeholder="Email/userName" formControlName="email"/>
-  <input type="password" placeholder="Password" formControlName="password" />
-  <button type="submit" >Submit</button>
+  <input type="text"  placeholder="Email/userName" formControlName="email"/><br>
+  <input type="password" placeholder="Password" formControlName="password" /><br/>,<br/>
+  <button  type="button" class="btn btn-primary" >Submit</button>
     </form>
 
 </div>
