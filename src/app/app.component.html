@@ -1,0 +1,87 @@
+
+
+
+<app-admin *ngIf="dataValue=='0';else song"></app-admin>
+
+<ng-template #song >
+<h1>Music Player</h1>
+<!-- ///////////////////////////////////table ///////////////////// -->
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Desc</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files  " >
+        <th scope="row">1</th>
+        <td>{{file.name}}</td>
+        <td>{{file.desc}}</td>
+        <td ><button (click)="fileplay(file)">Play Song</button></td>
+        <td ><button (click)="pause()">Pause</button></td>
+        <td ><button (click)="deleteSong(file)">Delete</button></td>
+        <td > <button (click)="updateSong(file)">Update</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <mat-paginator [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page">
+</mat-paginator>
+
+<!-- //////////////////////listing /////////////////
+<ul *ngFor="let file of files"  >
+    <li >{{file.name}}<button (click)="fileplay(file)">Play Song</button>
+        <button (click)="pause()">Pause</button>
+        <button (click)="deleteSong(file)">Delete</button>
+        <button (click)="updateSong(file)">Update</button>
+     </li>
+</ul> -->
+
+
+<div  >
+    <div>
+        <h1>Add Song</h1>
+    </div>
+    <form [formGroup]="addForm" (ngSubmit)="addsong()" >
+  <input type="text"  placeholder="name" formControlName="name"/><br/>
+  <input type="text"  placeholder="des" formControlName="desc"/><br/>
+  <input type="file"  (change)="selectImage($event)"  /><br/>
+  <input type="file"  (change)="selectFile($event)" /><br/>
+  <button type="submit" >Submit</button>
+    </form>
+
+</div>
+
+
+<!-- <h1>UPLOAD</h1>
+<div> 
+    <input type="file"  (change)="selectFile($event)" />
+    <button (click)="submit()">Submit</button>
+</div> -->
+
+
+
+
+
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+

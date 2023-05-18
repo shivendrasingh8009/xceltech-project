@@ -1,0 +1,30 @@
+<div>
+    <button (click)="userres()"  >Register</button>
+    <button (click)="userlog()">Login</button>
+</div>
+
+<div  [hidden]="logShow">
+    <div>
+        <h1>Login</h1>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" >
+  <input type="text"  placeholder="Email/userName" formControlName="email"/>
+  <input type="password" placeholder="Password" formControlName="password" />
+  <button type="submit" >Submit</button>
+    </form>
+
+</div>
+
+
+<div  [hidden]="regShow">
+    <div>
+        <h1>Register</h1>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="register()" >
+  <input type="text"  placeholder="Email/userName" formControlName="email"/>
+  <input type="password" placeholder="Password" formControlName="password" />
+  <button type="submit" >Submit</button>
+    </form>
+
+</div>
+
